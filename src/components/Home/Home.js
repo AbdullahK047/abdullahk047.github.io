@@ -3,7 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
-import google_saad from "../../Assets/Projects/google_saad.jpg"; // Import the image
 
 function Home() {
   return (
@@ -32,11 +31,6 @@ function Home() {
 
             <Col md={5} style={{ paddingBottom: 20 }}>
               <div className="avatar-container">
-                <img
-                  src={google_saad}
-                  alt="Saad Ahmed Rana"
-                  className="avatar" 
-                />
               </div>
             </Col>
           </Row>
