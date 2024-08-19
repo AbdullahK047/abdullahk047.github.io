@@ -11,16 +11,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2  # Checks-out your repository under $GITHUB_WORKSPACE
-      
-      - name: Setup Ruby, Jekyll
+
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'  # Specify the Ruby version. Adjust if your project uses another version
+          ruby-version: '3.1'  # Updated to a newer version that supports latest Bundler
 
-      - name: Build and test
+      - name: Update RubyGems
+        run: |
+          gem update --system
+
+      - name: Install dependencies
         run: |
           gem install jekyll bundler
           bundle install
+
+      - name: Build and test
+        run: |
           bundle exec jekyll build
 
       - name: Deploy to gh-pages
@@ -28,4 +35,5 @@ jobs:
         with:
           deploy_key: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site  # Directory where Jekyll builds the site to
+
 
