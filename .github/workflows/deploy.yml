@@ -14,6 +14,7 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+          token: ${{ secrets.DEPLOY_TOKEN }}  # Use the PAT for checking out the code
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -25,14 +26,16 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --local user.email "abdullah_2001@live.com"
-          git config --local user.name "AbdullahK047"
-        # Replace "you@example.com" with your GitHub email and "Your Name" with your GitHub username or any name you prefer
+          git config --local user.email "you@example.com"
+          git config --local user.name "Your Name"
 
       - name: Build and deploy
         env:
-          CI: false  # Set CI environment variable to false
-        run: npm run deploy  # This runs the build script and then deploys to gh-pages using your deploy script
+          CI: false
+        run: |
+          npm run build
+          npx gh-pages -d build -t true -r https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/AbdullahK047/abdullahk047.github.io.git  # Use the token in the URL
 
       - name: Clean up post-deployment
-        run: rm -rf node_modules/  # Optional step to clean up workspace post deployment
+        run: rm -rf node_modules/
+
