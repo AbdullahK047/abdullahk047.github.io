@@ -23,6 +23,12 @@ jobs:
       - name: Install dependencies
         run: npm install  # Install npm dependencies
 
+      - name: Configure Git
+        run: |
+          git config --local user.email "abdullah_2001@live.com"
+          git config --local user.name "AbdullahK047"
+        # Replace "you@example.com" with your GitHub email and "Your Name" with your GitHub username or any name you prefer
+
       - name: Build and deploy
         env:
           CI: false  # Set CI environment variable to false
