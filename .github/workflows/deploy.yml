@@ -24,6 +24,8 @@ jobs:
         run: npm install  # Install npm dependencies
 
       - name: Build and deploy
+        env:
+          CI: false  # Set CI environment variable to false
         run: npm run deploy  # This runs the build script and then deploys to gh-pages using your deploy script
 
       - name: Clean up post-deployment
