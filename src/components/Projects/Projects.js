@@ -17,7 +17,6 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={}
               alt="Saad Ahmed Rana"
               isBlog={false}
               title="Autnomous UAV"
@@ -44,7 +43,6 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={}
               alt="Saad Ahmed Rana"
               isBlog={false}
               title="Para thrust"
@@ -56,7 +54,6 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={moveIT}
               alt="Saad Ahmed Rana"
               isBlog={false}
               title="Path planning in ROS2"
@@ -68,7 +65,6 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-                imgPath={openCV}
                 alt="Saad Ahmed Rana"
                 isBlog={false}
                 title="Computer Vision"
@@ -82,7 +78,6 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={Confide} // Add the image for the new project
               alt="Saad Ahmed Rana"
               isBlog={false}
               title="Confide"
