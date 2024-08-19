@@ -1,20 +1,30 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy React App to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Adjust if your default branch has a different name
+      - main  # This triggers the workflow on pushes to the main branch.
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
         with:
-          persist-credentials: false  # This is necessary for the peaceiris/actions-gh-pages to work
+          persist-credentials: false
+          fetch-depth: 0
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # Directory containing your HTML/CSS/JS files; adjust if your files are in a subdirectory
+          node-version: '14'  # Use Node.js 14.x; adjust as necessary based on your requirements
+
+      - name: Install dependencies
+        run: npm install  # Install npm dependencies
+
+      - name: Build and deploy
+        run: npm run deploy  # This runs the build script and then deploys to gh-pages using your deploy script
+
+      - name: Clean up post-deployment
+        run: rm -rf node_modules/  # Optional step to clean up workspace post deployment
