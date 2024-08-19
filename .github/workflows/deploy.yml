@@ -1,0 +1,31 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push events to the main branch
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest  # Sets the runner to the latest Ubuntu version
+
+    steps:
+      - uses: actions/checkout@v2  # Checks-out your repository under $GITHUB_WORKSPACE
+      
+      - name: Setup Ruby, Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'  # Specify the Ruby version. Adjust if your project uses another version
+
+      - name: Build and test
+        run: |
+          gem install jekyll bundler
+          bundle install
+          bundle exec jekyll build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site  # Directory where Jekyll builds the site to
+
