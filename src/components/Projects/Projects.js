@@ -2,13 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import moveIT from "../../Assets/Projects/moveIT.png";
-import Pantry from "../../Assets/Projects/Pantry.png";
-import MATLAB from "../../Assets/Projects/MATLAB.png";
-import UAV from "../../Assets/Projects/UAV.jpg";
-import ROS22 from "../../Assets/Projects/ROS22.png";
-import openCV from "../../Assets/Projects/openCV.png";
-import Confide from "../../Assets/Projects/Confide.png"; // Add the import for the new image
 
 function Projects() {
   return (
@@ -24,7 +17,7 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={UAV}
+              imgPath={}
               alt="Saad Ahmed Rana"
               isBlog={false}
               title="Autnomous UAV"
@@ -36,7 +29,6 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-             imgPath={ROS22}
              alt="Saad Ahmed Rana"
              isBlog={false}
              title="Voice activated Robot"
@@ -47,20 +39,12 @@ function Projects() {
           </Col>
 
           <Col md={4} className="project-card">
-            <ProjectCard
-             imgPath={Pantry}
-             alt="Saad Ahmed Rana"
-             isBlog={false}
-             title="Inventory Management System"
-             description="Pantry Tracker is an intuitive inventory management system built with ReactJS and deployed on Vercel. This app leverages Firebase for backend data storage, enabling users to effortlessly add, track, and adjust pantry items."
-             ghLink="https://pantry-tracker-saad-c2lurmru2-saad-ahmed-ranas-projects.vercel.app"
-             demoLink="https://pantry-tracker-saad-c2lurmru2-saad-ahmed-ranas-projects.vercel.app/"              
-            />
+            
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={MATLAB}
+              imgPath={}
               alt="Saad Ahmed Rana"
               isBlog={false}
               title="Para thrust"
