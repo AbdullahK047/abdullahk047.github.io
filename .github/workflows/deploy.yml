@@ -1,39 +1,20 @@
-name: Jekyll site CI
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push events to the main branch
+      - main  # Adjust if your default branch has a different name
 
 jobs:
-  build_and_deploy:
-    runs-on: ubuntu-latest  # Sets the runner to the latest Ubuntu version
-
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2  # Checks-out your repository under $GITHUB_WORKSPACE
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@v2
         with:
-          ruby-version: '3.1'  # Updated to a newer version that supports latest Bundler
-
-      - name: Update RubyGems
-        run: |
-          gem update --system
-
-      - name: Install dependencies
-        run: |
-          gem install jekyll bundler
-          bundle install
-
-      - name: Build and test
-        run: |
-          bundle exec jekyll build
+          persist-credentials: false  # This is necessary for the peaceiris/actions-gh-pages to work
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site  # Directory where Jekyll builds the site to
-
-
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # Directory containing your HTML/CSS/JS files; adjust if your files are in a subdirectory like './public'
